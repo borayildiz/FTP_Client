@@ -1,0 +1,154 @@
+#:kivy 1.5
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+#: import ListItemLabel kivy.uix.listview.ListItemLabel
+#: import ListProperty kivy.properties.ListProperty
+
+<Controller>:
+    BoxLayout:
+        orientation: 'horizontal'
+        GridLayout:
+            rows: 4
+            cols: 1
+            padding: 10
+            padding: 10
+            orientation: 'vertical'
+            Label:
+                size_hint_y: None
+                height: 40
+                text: 'FTP CLIENT'
+                color: [1, 1, 0, 1]
+            GridLayout:
+                size_hint_y: None
+                height: 80
+                rows: 1
+                cols: 3
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: ''
+                    Button:
+                        id: ConnectButton
+                        height: 40
+                        text: 'Connect'
+                        on_press: root.ftp_client_connect(ConnectButton)
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: 'FTP Server Address'
+                    TextInput:
+                        size_hint_y: None
+                        height: 40
+                        id: ftp_server_address_text
+                        text: "ftp.debian.org"
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: 'Port'
+                    TextInput:
+                        size_hint_y: None
+                        height: 40
+                        id: ftp_client_port_text
+                        text: '21'
+            TextInput:
+                id: ftp_client_message_text
+                text: ''
+                readonly: False
+            GridLayout:
+                size_hint_y: None
+                height: 160
+                rows: 3
+                cols: 3
+                orientation: 'vertical'
+                Button:
+                    id: getWelcome_button
+                    text: 'getwelcome'
+                    on_press: root.ftp_client_getwelcome(getWelcome_button)
+                Button:
+                    id: retrlines_button
+                    text: 'Get File List'
+                    on_press: root.ftp_client_retrlines(retrlines_button)
+                Button:
+                    id: quit_button
+                    text: 'quit'
+                    on_press: root.ftp_client_quit(quit_button)
+                BoxLayout:
+                    orientation: 'vertical'
+                    Button:
+                        id: rtrBinary_button
+                        text: 'Download file as binary'
+                        on_press: root.ftp_client_rtrbinary(rtrBinary_button)
+                    TextInput:
+                        id: download_file_name_text
+                        text: 'Download File Name'
+                BoxLayout:
+                    orientation: 'vertical'
+                    Button:
+                        id: cwd_button
+                        text: 'Select Path'
+                        on_press: root.ftp_client_cwd(cwd_button)
+                    TextInput:
+                        id: file_name_text
+                        text: 'File Name'
+                Button:
+                    id: dir_button
+                    text: 'dir'
+                    on_press: root.ftp_client_dir(dir_button)
+
+        Splitter:
+            max_size: 400
+            min_size: 400
+            GridLayout:
+                rows: 3
+                cols: 1
+                padding: 10
+                orientation: 'horizontal'
+                Label:
+                    text: 'TCP SERVER'
+                    size_hint_y: None
+                    height: 40
+                    color: [1, 1, 0, 1]
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 80
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: ''
+                        ToggleButton:
+                            size_hint_y: None
+                            height: 40
+                            id: listen_button
+                            text: 'LISTEN'
+                            on_press:
+                    BoxLayout:
+                        orientation: 'vertical'
+                        Label:
+                            text: 'Port'
+                        TextInput:
+                            size_hint_y: None
+                            height: 40
+                            id: tcp_server_port_text
+                            text: '8000'
+                TextInput:
+                    id: tcp_server_listening_text
+                    text: ''
+                    readonly: True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
